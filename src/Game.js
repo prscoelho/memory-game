@@ -17,6 +17,9 @@ import img7 from './svg/7.svg';
 const images = [ img0, img1, img2, img3, img4, img5, img6, img7];
 
 const Game = ({ size }) => {
+  if (size > 8 || size < 1) {
+    throw new Error('Game size must be an integer, 0 to 8.')
+  }
   const [ board, setBoard ] = React.useState(generate(size));
   const [ selected, setSelected ] = React.useState([]);
   const [ completed, setCompleted ] = React.useState([]);
