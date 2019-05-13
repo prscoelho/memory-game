@@ -5,18 +5,10 @@ import generate from './logic/generate_board';
 
 import Square from './Square'
 
-import img0 from './svg/0.svg';
-import img1 from './svg/1.svg';
-import img2 from './svg/2.svg';
-import img3 from './svg/3.svg';
-import img4 from './svg/4.svg';
-import img5 from './svg/5.svg';
-import img6 from './svg/6.svg';
-import img7 from './svg/7.svg';
-
-const images = [ img0, img1, img2, img3, img4, img5, img6, img7];
-
 const Game = ({ size }) => {
+  if (size > 8 || size < 1) {
+    throw new Error('Game size must be an integer, 0 to 8.')
+  }
   const [ board, setBoard ] = React.useState(generate(size));
   const [ selected, selectSquare ] = React.useState([]);
   const [ completed, setCompleted ] = React.useState([]);
@@ -54,13 +46,16 @@ const Game = ({ size }) => {
       }
     }
   }
+  
+  const gameIsComplete = completed.length === size;
+  const message = gameIsComplete
+    ? <span>Congratulations! <button onClick={restart}>Restart?</button></span>
+    : <span>Select squares and find matching elements!</span>
 
   return (
     <div>
-      {completed.length === size ?
-        <h1>Congratulations! <button onClick={restart}>Restart?</button></h1> :
-        <h1>Memory - Select squares and find matching pairs!</h1>
-      }
+      <h1>Memory</h1>
+      <p>{message}</p>
       <div className="memory-grid">
         {board.map((element, index) => (
           <Square
@@ -68,9 +63,8 @@ const Game = ({ size }) => {
             click={() => select(index)}
             selected={selected.includes(index)}
             completed={completed.includes(element)}
-          >
-            <img src={images[element]} alt="" />
-          </Square>
+            element={element}
+          />
         ))}
       </div>
     </div>
