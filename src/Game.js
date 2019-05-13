@@ -58,17 +58,16 @@ const Game = ({ size }) => {
       }
     }
   }
-
-  let text;
-  if(completed.length === size) {
-    text = <h1>Congratulations! <button onClick={restart}>Restart?</button></h1>;
-  } else {
-    text = <h1>Memory - Select squares and find matching elements!</h1>;
-  }
+  
+  const gameIsComplete = completed.length === size;
+  const message = gameIsComplete
+    ? <span>Congratulations! <button onClick={restart}>Restart?</button></span>
+    : <span>Select squares and find matching elements!</span>
 
   return (
     <div>
-      {text}
+      <h1>Memory</h1>
+      <p>{message}</p>
       <div className="memory-grid">
         {board.map((element, index) => (
           <Square
