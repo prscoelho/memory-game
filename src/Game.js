@@ -50,7 +50,7 @@ const Game = ({ size }) => {
   const gameIsComplete = completed.length === size;
   const message = gameIsComplete
     ? <span>Congratulations! <button onClick={restart}>Restart?</button></span>
-    : <span>Select squares and find matching elements!</span>
+    : <span>Select squares and find matching pairs!</span>
 
   return (
     <div>

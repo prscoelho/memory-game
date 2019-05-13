@@ -1,11 +1,11 @@
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(4,200px);
+  grid-template-columns: repeat(4,180px);
 }
 
 .memory-grid-item, .memory-grid-item-selected, .memory-grid-item-completed {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   border: 2px solid #c7c7c7;
   background: #202020;
 }
