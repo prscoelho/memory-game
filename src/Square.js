@@ -1,6 +1,17 @@
 import React from 'react';
 
-const Square = ({ click, completed, selected, children}) => {
+import img0 from './svg/0.svg';
+import img1 from './svg/1.svg';
+import img2 from './svg/2.svg';
+import img3 from './svg/3.svg';
+import img4 from './svg/4.svg';
+import img5 from './svg/5.svg';
+import img6 from './svg/6.svg';
+import img7 from './svg/7.svg';
+
+const images = [ img0, img1, img2, img3, img4, img5, img6, img7];
+
+const Square = ({ click, completed, selected, element}) => {
   let className = "memory-grid-item";
 
   if(completed){
@@ -18,7 +29,7 @@ const Square = ({ click, completed, selected, children}) => {
   return (
     <div className={className} onClick={onClick}>
       <div className={completed || selected ? "show" : "hide"} >
-        {children}
+        <img src={images[element]} alt="" />
       </div>
     </div>
   );
