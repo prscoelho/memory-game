@@ -10,7 +10,7 @@ const Game = ({ size }) => {
     throw new Error('Game size must be an integer, 0 to 8.')
   }
   const [ board, setBoard ] = React.useState(generate(size));
-  const [ selected, setSelected ] = React.useState([]);
+  const [ selected, selectSquare ] = React.useState([]);
   const [ completed, setCompleted ] = React.useState([]);
   const [ showingResult, setShowingResult ] = React.useState(false);
   
@@ -20,29 +20,28 @@ const Game = ({ size }) => {
   
   const restart = () => {
     setBoard(generate(size));
-    setSelected([]);
+    selectSquare([]);
     setCompleted([]);
   }
 
   const next = () => {
-    setSelected([]);
+    selectSquare([]);
     setShowingResult(false);
   }
 
   const select = (id) => {
     if(showingResult) // Currently in timeout to show result. Ignore action
       return;
-    if(selected.length === 0){ // if there's no selected item, mark clicked as selected
-      setSelected([id]);
+    if(selected.length === 0){
+      selectSquare([id]);
     }
     else if(selected[0] !== id){
       // two elements selected, show both elements and check if they're equal
-      setSelected([id, ...selected]);
-      
-      if(board[id] === board[selected[0]]){ // success, found a matching pair, add it to completed
+      if(board[id] === board[selected[0]]) {
         setCompleted([board[id], ...completed]);
         next();
       } else { // not a matching pair, set timeout to display result and make the player wait 500ms before next move
+        selectSquare([id, ...selected]);
         setShowingResult(true);
       }
     }
