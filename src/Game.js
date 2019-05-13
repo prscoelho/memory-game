@@ -43,7 +43,8 @@ const Game = ({ size }) => {
     if(selected.length === 0){ // if there's no selected item, mark clicked as selected
       setSelected([id]);
     }
-    else { // two elements selected, show both elements and check if they're equal
+    else if(selected[0] !== id){
+      // two elements selected, show both elements and check if they're equal
       setSelected([id, ...selected]);
       
       if(board[id] === board[selected[0]]){ // success, found a matching pair, add it to completed
