@@ -18,11 +18,11 @@
   background: #3f2d2d;
 }
 
-.hide {
+.memory-grid-item > img {
   visibility: hidden
 }
 
-.show {
+.memory-grid-item-selected > img, .memory-grid-item-completed > img {
   visibility: visible
 }
 

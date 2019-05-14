@@ -28,9 +28,7 @@ const Square = ({ click, completed, selected, element}) => {
 
   return (
     <div className={className} onClick={onClick}>
-      <div className={completed || selected ? "show" : "hide"} >
-        <img src={images[element]} alt="" />
-      </div>
+      <img src={images[element]} alt="" />
     </div>
   );
 }
