@@ -20,6 +20,7 @@ const Square = ({ click, completed, selected, element}) => {
     className += "-selected";
   }
 
+
   const onClick = () => {
     if(! completed) {
       click();
@@ -27,7 +28,7 @@ const Square = ({ click, completed, selected, element}) => {
   }
 
   return (
-    <div className={className} onClick={onClick}>
+    <div className={className} data-cy={element} onClick={onClick}>
       <img src={images[element]} alt="" />
     </div>
   );
