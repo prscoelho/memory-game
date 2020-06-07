@@ -4,6 +4,8 @@ This is a simple memory game where the player must find matching pairs.
 
 Here's a [working demo.](https://enthusiastic-jellyfish.surge.sh)
 
+![Preview](preview.png)
+
 ## Running
 
 ```sh
